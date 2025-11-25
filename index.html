@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Latihan PSAS Bahasa Inggris XI by @rcheleyn</title>
+  <title>Latihan PSAS Bahasa Inggris XI (Bilingual + Structured)</title>
+  <button class="topic-btn" onclick="loadAllQuestions()">📚 contoh 15 soal</button>
   <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -116,7 +117,6 @@
       color: var(--text);
     }
 
-    /* Kotak Informasi */
     .info-box {
       margin: 16px 0;
       padding: 16px;
@@ -240,12 +240,35 @@
       display: none;
     }
 
+    #warning-text {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-top: 8px;
+      display: none;
+    }
+
     .final-score {
       font-size: 1.4rem;
       text-align: center;
       margin: 20px 0;
       font-weight: 600;
       color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: var(--text);
+      opacity: 0.8;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -264,6 +287,7 @@
     <button class="topic-btn" onclick="loadTopic('descriptive')">📝 Descriptive Text</button>
     <button class="topic-btn" onclick="loadTopic('procedure')">🔧 Procedure Text</button>
     <button class="topic-btn" onclick="loadTopic('factual')">🐾 Factual Report Text</button>
+    <button class="topic-btn" onclick="loadAllQuestions()">📚 15 Soal PSAS Lengkap</button>
   </div>
 
   <div id="content" class="content">
@@ -275,7 +299,6 @@
 </div>
 
 <script>
-  // Data soal dan materi dengan struktur kotak
   const topics = {
     descriptive: {
       title: "Descriptive Text",
@@ -297,66 +320,11 @@
       },
       example: "Borobudur Temple\n\nBorobudur is a 9th-century Mahayana Buddhist temple in Magelang, Central Java. It is the world’s largest Buddhist temple and a UNESCO World Heritage Site. The temple is decorated with 2,672 relief panels and 504 Buddha statues...",
       questions: [
-        {
-          q: "What is the communicative purpose of a descriptive text? (Apa tujuan komunikatif dari descriptive text?)",
-          opts: [
-            "To explain how to make something. (Menjelaskan cara membuat sesuatu.)",
-            "To describe something specific and detailed. (Menggambarkan sesuatu secara spesifik dan detail.)",
-            "To report general facts about a class of things. (Melaporkan fakta umum tentang suatu kelas benda.)",
-            "To tell a personal experience. (Menceritakan pengalaman pribadi.)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! Descriptive text memang bertujuan menggambarkan sesuatu secara spesifik dan detail, seperti tempat wisata atau benda bersejarah.",
-          hint: "Fokus pada 'deskripsi detail' dari satu subjek tertentu."
-        },
-        {
-          q: "Which of the following sentences uses the language feature of descriptive text, EXCEPT: (Kalimat berikut menggunakan ciri kebahasaan descriptive text, KECUALI:)",
-          opts: [
-            "It is very beautiful. (Ini sangat indah.)",
-            "The temple has ancient carvings. (Candi ini memiliki ukiran kuno.)",
-            "Cut the paper into small pieces. (Potong kertas menjadi potongan kecil.)",
-            "This place is historical and peaceful. (Tempat ini bersejarah dan damai.)"
-          ],
-          ans: 2,
-          explain: "❌ 'Cut the paper...' adalah kalimat perintah (imperative), ciri procedure text, bukan descriptive.",
-          hint: "Cari kalimat yang tidak menggambarkan sifat/ciri benda."
-        },
-        {
-          q: "What is the structure of a descriptive text? (Apa struktur descriptive text?)",
-          opts: [
-            "Goal – Materials – Steps (Tujuan – Bahan – Langkah)",
-            "General classification – Description (Klasifikasi umum – Deskripsi)",
-            "Identification – Description (Identifikasi – Deskripsi)",
-            "Orientation – Events – Re-orientation (Orientasi – Peristiwa – Re-orientasi)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Struktur descriptive text: Identification (perkenalan subjek) lalu Description (ciri-ciri).",
-          hint: "Ini bukan laporan umum, tapi deskripsi spesifik."
-        },
-        {
-          q: "In descriptive text, the word 'ancient' usually functions as: (Dalam teks descriptive, kata 'ancient' biasanya berfungsi sebagai:)",
-          opts: [
-            "Action verb (Kata kerja aksi)",
-            "Adjective (Kata sifat)",
-            "Noun (Kata benda)",
-            "Adverb (Kata keterangan)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! 'Ancient' adalah adjective (kata sifat) yang menggambarkan usia benda.",
-          hint: "Kata sifat = adjective = mendeskripsikan benda/orang."
-        },
-        {
-          q: "Why does descriptive text use simple present tense? (Mengapa descriptive text menggunakan simple present tense?)",
-          opts: [
-            "Because it tells about yesterday’s events. (Karena menceritakan kejadian kemarin.)",
-            "Because it gives commands. (Karena memberi perintah.)",
-            "Because it states facts that are always true. (Karena menyatakan fakta yang selalu benar.)",
-            "Because it describes childhood habits. (Karena menggambarkan kebiasaan masa kecil.)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Simple present digunakan untuk menyatakan fakta umum atau keadaan yang selalu benar.",
-          hint: "Fakta = selalu benar, bukan masa lalu atau perintah."
-        }
+        { q: "What is the communicative purpose of a descriptive text? (Apa tujuan komunikatif dari descriptive text?)", opts: ["To explain how to make something. (Menjelaskan cara membuat sesuatu.)","To describe something specific and detailed. (Menggambarkan sesuatu secara spesifik dan detail.)","To report general facts about a class of things. (Melaporkan fakta umum tentang suatu kelas benda.)","To tell a personal experience. (Menceritakan pengalaman pribadi.)"], ans: 1, explain: "✅ Benar! Descriptive text memang bertujuan menggambarkan sesuatu secara spesifik dan detail, seperti tempat wisata atau benda bersejarah.", hint: "Fokus pada 'deskripsi detail' dari satu subjek tertentu." },
+        { q: "Which of the following sentences uses the language feature of descriptive text, EXCEPT: (Kalimat berikut menggunakan ciri kebahasaan descriptive text, KECUALI:)", opts: ["It is very beautiful. (Ini sangat indah.)","The temple has ancient carvings. (Candi ini memiliki ukiran kuno.)","Cut the paper into small pieces. (Potong kertas menjadi potongan kecil.)","This place is historical and peaceful. (Tempat ini bersejarah dan damai.)"], ans: 2, explain: "❌ 'Cut the paper...' adalah kalimat perintah (imperative), ciri procedure text, bukan descriptive.", hint: "Cari kalimat yang tidak menggambarkan sifat/ciri benda." },
+        { q: "What is the structure of a descriptive text? (Apa struktur descriptive text?)", opts: ["Goal – Materials – Steps (Tujuan – Bahan – Langkah)","General classification – Description (Klasifikasi umum – Deskripsi)","Identification – Description (Identifikasi – Deskripsi)","Orientation – Events – Re-orientation (Orientasi – Peristiwa – Re-orientasi)"], ans: 2, explain: "✅ Benar! Struktur descriptive text: Identification (perkenalan subjek) lalu Description (ciri-ciri).", hint: "Ini bukan laporan umum, tapi deskripsi spesifik." },
+        { q: "In descriptive text, the word 'ancient' usually functions as: (Dalam teks descriptive, kata 'ancient' biasanya berfungsi sebagai:)", opts: ["Action verb (Kata kerja aksi)","Adjective (Kata sifat)","Noun (Kata benda)","Adverb (Kata keterangan)"], ans: 1, explain: "✅ Benar! 'Ancian' adalah adjective (kata sifat) yang menggambarkan usia benda.", hint: "Kata sifat = adjective = mendeskripsikan benda/orang." },
+        { q: "Why does descriptive text use simple present tense? (Mengapa descriptive text menggunakan simple present tense?)", opts: ["Because it tells about yesterday’s events. (Karena menceritakan kejadian kemarin.)","Because it gives commands. (Karena memberi perintah.)","Because it states facts that are always true. (Karena menyatakan fakta yang selalu benar.)","Because it describes childhood habits. (Karena menggambarkan kebiasaan masa kecil.)"], ans: 2, explain: "✅ Benar! Simple present digunakan untuk menyatakan fakta umum atau keadaan yang selalu benar.", hint: "Fakta = selalu benar, bukan masa lalu atau perintah." }
       ]
     },
     procedure: {
@@ -381,66 +349,11 @@
       },
       example: "How to Make a Cup of Tea\n\n1. Boil water in a kettle.\n2. Put a tea bag into a cup.\n3. Pour the hot water into the cup.\n4. Let it steep for 3 minutes.\n5. Remove the tea bag and enjoy!",
       questions: [
-        {
-          q: "Which sentence below is an imperative sentence? (Kalimat berikut yang merupakan imperative sentence adalah...)",
-          opts: [
-            "She boils the water. (Dia merebus air.)",
-            "The water is boiling. (Air sedang mendidih.)",
-            "Boil the water. (Rebus airnya.)",
-            "I boiled the water yesterday. (Saya merebus air kemarin.)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Imperative sentence memberi perintah langsung tanpa subjek: 'Boil the water.'",
-          hint: "Cari kalimat perintah langsung, tanpa 'she/he/I'."
-        },
-        {
-          q: "What is the communicative purpose of a procedure text? (Apa tujuan komunikatif procedure text?)",
-          opts: [
-            "To describe tourist attractions. (Menggambarkan tempat wisata.)",
-            "To explain how to do/make something. (Menjelaskan cara melakukan/membuat sesuatu.)",
-            "To report scientific facts. (Melaporkan fakta ilmiah.)",
-            "To persuade the reader. (Meyakinkan pembaca.)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! Tujuannya adalah memberi instruksi langkah demi langkah.",
-          hint: "Fokus pada 'cara membuat/melakukan'."
-        },
-        {
-          q: "Verbs in imperative sentences are usually in the form of: (Kata kerja dalam kalimat imperatif biasanya berbentuk:)",
-          opts: [
-            "Verb-ing (Kata kerja + -ing)",
-            "Past tense (Bentuk lampau)",
-            "Bare infinitive (base verb) (Kata kerja dasar)",
-            "To + verb (To + kata kerja)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Contoh: 'Cut', 'Mix', 'Pour' — semua kata kerja dasar.",
-          hint: "Ingat: 'Do this!', bukan 'Doing this'."
-        },
-        {
-          q: "Which of the following is NOT a language feature of procedure text? (Manakah yang BUKAN ciri kebahasaan procedure text?)",
-          opts: [
-            "Simple present tense (Simple present tense)",
-            "Imperative sentences (Kalimat perintah)",
-            "Specific participant (e.g., 'my robot') (Peserta spesifik, contoh: 'robotku')",
-            "Sequence words (Kata urutan)"
-          ],
-          ans: 2,
-          explain: "❌ Procedure text bersifat umum, bukan spesifik ke 'my' atau 'his'.",
-          hint: "Procedure text bersifat universal, bukan personal."
-        },
-        {
-          q: "The step 'Stir gently for 2 minutes' belongs to the: (Langkah 'Aduk perlahan selama 2 menit' termasuk dalam bagian:)",
-          opts: [
-            "Goal (Tujuan)",
-            "Materials (Bahan)",
-            "Steps (Langkah)",
-            "Conclusion (Kesimpulan)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Ini adalah bagian dari langkah-langkah (steps).",
-          hint: "Apa yang harus kamu lakukan? Itu bagian steps."
-        }
+        { q: "Which sentence below is an imperative sentence? (Kalimat berikut yang merupakan imperative sentence adalah...)", opts: ["She boils the water. (Dia merebus air.)","The water is boiling. (Air sedang mendidih.)","Boil the water. (Rebus airnya.)","I boiled the water yesterday. (Saya merebus air kemarin.)"], ans: 2, explain: "✅ Benar! Imperative sentence memberi perintah langsung tanpa subjek: 'Boil the water.'", hint: "Cari kalimat perintah langsung, tanpa 'she/he/I'." },
+        { q: "What is the communicative purpose of a procedure text? (Apa tujuan komunikatif procedure text?)", opts: ["To describe tourist attractions. (Menggambarkan tempat wisata.)","To explain how to do/make something. (Menjelaskan cara melakukan/membuat sesuatu.)","To report scientific facts. (Melaporkan fakta ilmiah.)","To persuade the reader. (Meyakinkan pembaca.)"], ans: 1, explain: "✅ Benar! Tujuannya adalah memberi instruksi langkah demi langkah.", hint: "Fokus pada 'cara membuat/melakukan'." },
+        { q: "Verbs in imperative sentences are usually in the form of: (Kata kerja dalam kalimat imperatif biasanya berbentuk:)", opts: ["Verb-ing (Kata kerja + -ing)","Past tense (Bentuk lampau)","Bare infinitive (base verb) (Kata kerja dasar)","To + verb (To + kata kerja)"], ans: 2, explain: "✅ Benar! Contoh: 'Cut', 'Mix', 'Pour' — semua kata kerja dasar.", hint: "Ingat: 'Do this!', bukan 'Doing this'." },
+        { q: "Which of the following is NOT a language feature of procedure text? (Manakah yang BUKAN ciri kebahasaan procedure text?)", opts: ["Simple present tense (Simple present tense)","Imperative sentences (Kalimat perintah)","Specific participant (e.g., 'my robot') (Peserta spesifik, contoh: 'robotku')","Sequence words (Kata urutan)"], ans: 2, explain: "❌ Procedure text bersifat umum, bukan spesifik ke 'my' atau 'his'.", hint: "Procedure text bersifat universal, bukan personal." },
+        { q: "The step 'Stir gently for 2 minutes' belongs to the: (Langkah 'Aduk perlahan selama 2 menit' termasuk dalam bagian:)", opts: ["Goal (Tujuan)","Materials (Bahan)","Steps (Langkah)","Conclusion (Kesimpulan)"], ans: 2, explain: "✅ Benar! Ini adalah bagian dari langkah-langkah (steps).", hint: "Apa yang harus kamu lakukan? Itu bagian steps." }
       ]
     },
     factual: {
@@ -464,66 +377,11 @@
       },
       example: "Dolphins\n\nDolphins are marine mammals known for their intelligence. They live in oceans worldwide and communicate using clicks and whistles. They breathe air through a blowhole on top of their heads and can dive up to 300 meters deep.",
       questions: [
-        {
-          q: "What is the social function of a factual report text? (Apa fungsi sosial factual report text?)",
-          opts: [
-            "To describe specific objects. (Menggambarkan objek spesifik.)",
-            "To give instructions. (Memberi instruksi.)",
-            "To deliver information based on scientific facts. (Menyampaikan informasi berdasarkan fakta ilmiah.)",
-            "To entertain the reader. (Menghibur pembaca.)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! Tujuannya adalah menyampaikan informasi objektif berdasarkan fakta.",
-          hint: "Fokus pada 'fakta ilmiah', bukan opini atau cerita."
-        },
-        {
-          q: "Why does factual report use simple present tense? (Mengapa factual report menggunakan simple present tense?)",
-          opts: [
-            "Because it tells personal experiences. (Karena menceritakan pengalaman pribadi.)",
-            "Because it states timeless scientific facts. (Karena menyatakan fakta ilmiah yang berlaku umum.)",
-            "Because it gives commands. (Karena memberi perintah.)",
-            "Because it describes past events. (Karena menggambarkan kejadian masa lalu.)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! Fakta ilmiah seperti 'Dolphins breathe air' selalu benar, jadi pakai simple present.",
-          hint: "Fakta = timeless = simple present."
-        },
-        {
-          q: "What is the generic structure of a factual report text? (Apa struktur umum factual report text?)",
-          opts: [
-            "Identification – Description (Identifikasi – Deskripsi)",
-            "General classification – Description (Klasifikasi umum – Deskripsi)",
-            "Goal – Steps (Tujuan – Langkah)",
-            "Orientation – Complication – Resolution (Orientasi – Komplikasi – Resolusi)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! Dimulai dari klasifikasi umum (‘Dolphins are marine mammals’), lalu deskripsi.",
-          hint: "Bukan deskripsi spesifik, tapi kelas umum."
-        },
-        {
-          q: "Which sentence below is appropriate for a factual report? (Kalimat berikut yang sesuai dengan factual report adalah...)",
-          opts: [
-            "My cat is very cute and loves me. (Kucingku sangat lucu dan menyayangiku.)",
-            "Cats are mammals that have sharp claws and excellent night vision. (Kucing adalah mamalia yang memiliki cakar tajam dan penglihatan malam yang bagus.)",
-            "Make sure to feed your cat every morning. (Pastikan memberi makan kucingmu setiap pagi.)",
-            "I saw a black cat yesterday. (Saya melihat kucing hitam kemarin.)"
-          ],
-          ans: 1,
-          explain: "✅ Benar! Ini menyampaikan fakta umum tentang kucing, bukan pengalaman pribadi.",
-          hint: "Hindari kata 'my', 'I', 'your'."
-        },
-        {
-          q: "In the factual report, the word 'marine' means: (Dalam teks factual report, kata 'marine' berarti:)",
-          opts: [
-            "Land (Darat)",
-            "Air (Udara)",
-            "Sea (Laut)",
-            "Sky (Langit)"
-          ],
-          ans: 2,
-          explain: "✅ Benar! 'Marine mammals' = mamalia laut, seperti lumba-lumba.",
-          hint: "Ingat: 'marine' berkaitan dengan laut."
-        }
+        { q: "What is the social function of a factual report text? (Apa fungsi sosial factual report text?)", opts: ["To describe specific objects. (Menggambarkan objek spesifik.)","To give instructions. (Memberi instruksi.)","To deliver information based on scientific facts. (Menyampaikan informasi berdasarkan fakta ilmiah.)","To entertain the reader. (Menghibur pembaca.)"], ans: 2, explain: "✅ Benar! Tujuannya adalah menyampaikan informasi objektif berdasarkan fakta.", hint: "Fokus pada 'fakta ilmiah', bukan opini atau cerita." },
+        { q: "Why does factual report use simple present tense? (Mengapa factual report menggunakan simple present tense?)", opts: ["Because it tells personal experiences. (Karena menceritakan pengalaman pribadi.)","Because it states timeless scientific facts. (Karena menyatakan fakta ilmiah yang berlaku umum.)","Because it gives commands. (Karena memberi perintah.)","Because it describes past events. (Karena menggambarkan kejadian masa lalu.)"], ans: 1, explain: "✅ Benar! Fakta ilmiah seperti 'Dolphins breathe air' selalu benar, jadi pakai simple present.", hint: "Fakta = timeless = simple present." },
+        { q: "What is the generic structure of a factual report text? (Apa struktur umum factual report text?)", opts: ["Identification – Description (Identifikasi – Deskripsi)","General classification – Description (Klasifikasi umum – Deskripsi)","Goal – Steps (Tujuan – Langkah)","Orientation – Complication – Resolution (Orientasi – Komplikasi – Resolusi)"], ans: 1, explain: "✅ Benar! Dimulai dari klasifikasi umum (‘Dolphins are marine mammals’), lalu deskripsi.", hint: "Bukan deskripsi spesifik, tapi kelas umum." },
+        { q: "Which sentence below is appropriate for a factual report? (Kalimat berikut yang sesuai dengan factual report adalah...)", opts: ["My cat is very cute and loves me. (Kucingku sangat lucu dan menyayangiku.)","Cats are mammals that have sharp claws and excellent night vision. (Kucing adalah mamalia yang memiliki cakar tajam dan penglihatan malam yang bagus.)","Make sure to feed your cat every morning. (Pastikan memberi makan kucingmu setiap pagi.)","I saw a black cat yesterday. (Saya melihat kucing hitam kemarin.)"], ans: 1, explain: "✅ Benar! Ini menyampaikan fakta umum tentang kucing, bukan pengalaman pribadi.", hint: "Hindari kata 'my', 'I', 'your'." },
+        { q: "In the factual report, the word 'marine' means: (Dalam teks factual report, kata 'marine' berarti:)", opts: ["Land (Darat)","Air (Udara)","Sea (Laut)","Sky (Langit)"], ans: 2, explain: "✅ Benar! 'Marine mammals' = mamalia laut, seperti lumba-lumba.", hint: "Ingat: 'marine' berkaitan dengan laut." }
       ]
     }
   };
@@ -548,46 +406,13 @@
     document.getElementById('content').style.display = 'block';
     document.getElementById('result-section').style.display = 'none';
 
-    // Buat konten dengan kotak-kotak
     let matHTML = `
       <h2 style="font-family:'Bubblegum Sans'; color:var(--accent);">${topic.title}</h2>
-      
-      <!-- Kotak Materi -->
-      <div class="info-box">
-        <h3>Materi</h3>
-        <p>${topic.material.materi}</p>
-      </div>
-      
-      <!-- Kotak Struktur -->
-      <div class="info-box">
-        <h3>Struktur</h3>
-        <ul style="padding-left: 24px; margin: 8px 0;">
-          ${topic.material.struktur.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-      </div>
-      
-      <!-- Kotak Kebahasaan -->
-      <div class="info-box">
-        <h3>Ciri Kebahasaan</h3>
-        <ul style="padding-left: 24px; margin: 8px 0;">
-          ${topic.material.kebahasaan.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-      </div>
-      
-      <!-- Kotak Rumus -->
-      <div class="info-box">
-        <h3>Rumus / Pola Kalimat</h3>
-        <ul style="padding-left: 24px; margin: 8px 0;">
-          ${topic.material.rumus.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-      </div>
-      
-      <!-- Contoh -->
-      <div class="example">
-        <strong>Contoh:</strong><br>${topic.example.replace(/\n/g, '<br>')}
-      </div>
-      
-      <!-- Tombol Mulai -->
+      <div class="info-box"><h3>Materi</h3><p>${topic.material.materi}</p></div>
+      <div class="info-box"><h3>Struktur</h3><ul style="padding-left:24px;margin:8px 0;">${topic.material.struktur.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+      <div class="info-box"><h3>Ciri Kebahasaan</h3><ul style="padding-left:24px;margin:8px 0;">${topic.material.kebahasaan.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+      <div class="info-box"><h3>Rumus / Pola Kalimat</h3><ul style="padding-left:24px;margin:8px 0;">${topic.material.rumus.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+      <div class="example"><strong>Contoh:</strong><br>${topic.example.replace(/\n/g,'<br>')}</div>
       <button class="topic-btn" onclick="startQuiz()">Mulai Latihan Soal</button>
     `;
     document.getElementById('material-section').innerHTML = matHTML;
@@ -602,29 +427,27 @@
 
   function showQuestion() {
     const qData = topics[currentTopic].questions[currentQuestionIndex];
-    let optsHTML = '';
-    qData.opts.forEach((opt, i) => {
-      optsHTML += `<div class="option" onclick="selectOption(${i})">${String.fromCharCode(65 + i)}. ${opt}</div>`;
-    });
+    let optsHTML = qData.opts.map((opt,i)=>
+      `<div class="option" onclick="selectOption(${i})">${String.fromCharCode(65+i)}. ${opt}</div>`
+    ).join('');
 
     document.getElementById('material-section').innerHTML = '';
     document.getElementById('quiz-section').innerHTML = `
-      <div class="question">${currentQuestionIndex + 1}. ${qData.q}</div>
+      <div class="question">${currentQuestionIndex+1}. ${qData.q}</div>
       <div class="options">${optsHTML}</div>
       <div class="feedback" id="feedback"></div>
       <div class="controls">
         <button class="hint-btn" onclick="showHint()">💡 Petunjuk</button>
         <button class="next-btn" id="next-btn" onclick="nextQuestion()" disabled>Lanjut</button>
       </div>
+      <p id="warning-text">❗ Jangan pencet “Lanjut” dulu kalau penjelasan ini masih muncul!</p>
       <div class="hint-box" id="hint-box">${qData.hint}</div>
     `;
   }
 
   function selectOption(index) {
     selectedOption = index;
-    document.querySelectorAll('.option').forEach((el, i) => {
-      el.classList.toggle('selected', i === index);
-    });
+    document.querySelectorAll('.option').forEach((el,i)=>el.classList.toggle('selected',i===index));
     document.getElementById('next-btn').disabled = false;
   }
 
@@ -645,7 +468,8 @@
       feedbackEl.textContent = qData.explain;
     }
 
-    document.querySelectorAll('.option').forEach(el => el.style.pointerEvents = 'none');
+    document.querySelectorAll('.option').forEach(el=>el.style.pointerEvents='none');
+    document.getElementById('warning-text').style.display = 'block';
 
     setTimeout(() => {
       currentQuestionIndex++;
@@ -657,35 +481,125 @@
     }, 1500);
   }
 
-  function showResult() {
-    const percent = Math.round((score / topics[currentTopic].questions.length) * 100);
-    let emoji = '😐';
-    if (percent >= 80) emoji = '🌟';
-    else if (percent >= 60) emoji = '🙂';
-    else if (percent >= 40) emoji = '🤔';
-    else emoji = '💡';
-
-    document.getElementById('quiz-section').innerHTML = '';
-    document.getElementById('result-section').innerHTML = `
-      <div class="final-score">${emoji} Skor Kamu: ${score}/${topics[currentTopic].questions.length} (${percent}%)</div>
-      <div class="controls">
-        <button class="retry-btn" onclick="startQuiz()">Ulangi Latihan</button>
-        <button class="home-btn" onclick="goHome()">Kembali ke Menu</button>
-      </div>
-    `;
-    document.getElementById('result-section').style.display = 'block';
+function showResult() {
+  let totalQuestions;
+  if (currentTopic === 'all') {
+    totalQuestions = allQuestions.length; // 15 soal (untuk sekarang)
+  } else {
+    totalQuestions = topics[currentTopic].questions.length;
   }
+
+  const percent = Math.round((score / totalQuestions) * 100);
+  let emoji = '😐';
+  if (percent >= 80) emoji = '🌟';
+  else if (percent >= 60) emoji = '🙂';
+  else if (percent >= 40) emoji = '🤔';
+  else emoji = '💡';
+
+  document.getElementById('quiz-section').innerHTML = '';
+  document.getElementById('result-section').innerHTML = `
+    <div class="final-score">${emoji} Skor Kamu: ${score}/${totalQuestions} (${percent}%)</div>
+    <div class="controls">
+      <button class="retry-btn" onclick="startQuizFromCurrentMode()">Ulangi Latihan</button>
+      <button class="home-btn" onclick="goHome()">Kembali ke Menu</button>
+    </div>
+  `;
+  document.getElementById('result-section').style.display = 'block';
+}
+
+  // Gabungkan semua soal dari 3 materi → total 15 soal
+const allQuestions = [
+  ...topics.descriptive.questions,
+  ...topics.procedure.questions,
+  ...topics.factual.questions
+];
+
+function loadAllQuestions() {
+  currentTopic = 'all';
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+  document.getElementById('result-section').style.display = 'none';
+
+  // Tampilkan langsung kuis, tanpa halaman materi
+  currentQuestionIndex = 0;
+  score = 0;
+  showAllQuiz();
+}
+
+function showAllQuiz() {
+  if (currentQuestionIndex >= allQuestions.length) {
+    showResult();
+    return;
+  }
+
+  const qData = allQuestions[currentQuestionIndex];
+  let optsHTML = qData.opts.map((opt, i) =>
+    `<div class="option" onclick="selectOptionAll(${i})">${String.fromCharCode(65 + i)}. ${opt}</div>`
+  ).join('');
+
+  document.getElementById('material-section').innerHTML = '';
+  document.getElementById('quiz-section').innerHTML = `
+    <div class="question">${currentQuestionIndex + 1}. ${qData.q}</div>
+    <div class="options">${optsHTML}</div>
+    <div class="feedback" id="feedback"></div>
+    <div class="controls">
+      <button class="hint-btn" onclick="showHintAll()">💡 Petunjuk</button>
+      <button class="next-btn" id="next-btn" onclick="nextQuestionAll()" disabled>Lanjut</button>
+    </div>
+    <p id="warning-text">❗ Jangan pencet “Lanjut” dulu kalau penjelasan ini masih muncul!</p>
+    <div class="hint-box" id="hint-box">${qData.hint}</div>
+  `;
+}
+
+function selectOptionAll(index) {
+  selectedOption = index;
+  document.querySelectorAll('.option').forEach((el, i) => el.classList.toggle('selected', i === index));
+  document.getElementById('next-btn').disabled = false;
+}
+
+function showHintAll() {
+  document.getElementById('hint-box').style.display = 'block';
+}
+
+function nextQuestionAll() {
+  const qData = allQuestions[currentQuestionIndex];
+  const feedbackEl = document.getElementById('feedback');
+
+  if (selectedOption === qData.ans) {
+    score++;
+    feedbackEl.className = 'feedback correct';
+    feedbackEl.textContent = qData.explain;
+  } else {
+    feedbackEl.className = 'feedback incorrect';
+    feedbackEl.textContent = qData.explain;
+  }
+
+  document.querySelectorAll('.option').forEach(el => el.style.pointerEvents = 'none');
+  document.getElementById('warning-text').style.display = 'block';
+
+  setTimeout(() => {
+    currentQuestionIndex++;
+    showAllQuiz();
+  }, 1500);
+}
+function startQuizFromCurrentMode() {
+  if (currentTopic === 'all') {
+    loadAllQuestions();
+  } else {
+    startQuiz();
+  }
+}
 </script>
-<footer style="text-align:center; margin-top:30px; font-size:0.9rem; color:var(--text); opacity:0.8;">
+
+<footer>
   Dibuat oleh 
-  <a href="https://instagram.com/rcheleyn" target="_blank" style="color:var(--accent); text-decoration:none; font-weight:600;">
-    @rcheleyn
-  </a> 
+  <a href="https://instagram.com/rcheleyn" target="_blank">@rcheleyn</a> 
   dengan cynta 💖
   <br>
   <a href="https://instagram.com/rcheleyn" target="_blank" style="color:#e1306c; font-size:1.3rem; margin-top:6px; display:inline-block;">
     <i class="fab fa-instagram"></i>
   </a>
 </footer>
+
 </body>
 </html>
